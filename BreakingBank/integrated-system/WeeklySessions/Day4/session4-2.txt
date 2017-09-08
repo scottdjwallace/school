@@ -1,0 +1,14 @@
+login
+retail
+deposit
+555555
+10000
+withdraw
+666666
+500
+transfer
+555555
+666666
+2000
+logout
+stop

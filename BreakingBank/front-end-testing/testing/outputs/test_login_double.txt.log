@@ -1,0 +1,11 @@
+Type "login" to login: login
+
+agent or retail: agent
+
+Perform a transaction: login
+
+Please enter a valid transaction type.
+Perform a transaction: logout
+
+Type "login" to login: stop
+

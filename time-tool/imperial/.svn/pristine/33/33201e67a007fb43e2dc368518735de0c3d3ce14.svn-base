@@ -1,0 +1,20 @@
+/*
+ * main.cpp
+ *
+ *  Created on: Mar 1, 2015
+ *      Author: 7cm5_000
+ */
+
+#include <fstream>
+#include <iostream>
+
+#include "./ics_files/ICS_VCalendar.h"
+#include "./ics_files/ICS_Time/ICS_Date.h"
+#include "./testing/ICS_Date_Test.h"
+
+int main(){
+
+}
+
+
+

@@ -1,0 +1,46 @@
+/*
+ * icsReadNext.cpp
+ *
+ *  Created on: Feb 28, 2015
+ *      Author: 7cm5_000
+ */
+
+
+#include "icsHelpers.h"
+#include "icsExceptions.h"
+
+char getNewlineChar(ifstream& file){
+	streampos pos = file.tellg();
+	string line;
+	getline(file, line);
+	file.seekg(pos, ios_base::beg);
+
+	return line.at(line.length() - 1);
+}
+
+void trimRight(string& s){
+	char* array = new char[s.length() + 1];
+
+	array[s.length()] = 0;
+	for (int j = s.length() - 1; j >= 0; j -= 1){
+		char c = s.at(j);
+		if (c == 0x20 || (c >= 0x9 && c <= 0xd)){
+			array[j] = 0;
+		} else {
+			array[j] = c;
+		}
+	}
+
+	s = array;
+
+	delete[] array;
+}
+
+/*
+void printWithSpacing(int n, string s){
+	for (int i = 0; i < n; i += 1){
+		cout << "    ";
+	}
+	cout << s << endl;
+}
+*/

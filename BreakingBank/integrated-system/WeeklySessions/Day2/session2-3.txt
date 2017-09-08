@@ -1,0 +1,13 @@
+login
+agent
+withdraw
+777777
+100
+withdraw
+888888
+100
+withdraw
+999999
+100
+logout
+stop

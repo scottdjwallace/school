@@ -1,0 +1,69 @@
+/*
+ * ICS_RRule.h
+ *
+ *  Created on: Mar 20, 2015
+ *      Author: 7cm5_000
+ */
+
+#ifndef ICS_RRULE_H_
+#define ICS_RRULE_H_
+
+// A good resource: http://www.kanzaki.com/docs/ical/rrule.html
+
+#include <string>
+#include <iostream>
+#include <fstream>
+#include <stdexcept>
+#include "ICS_Time/ICS_Date.h"
+
+using namespace std;
+
+class RecurranceException : public runtime_error {
+public:
+	RecurranceException(ICS_Date date) :
+		runtime_error("Recurrence does not occur on the date: " + date.toString()) {};
+};
+
+class ICS_RRule {
+	friend ofstream& operator<<(ofstream& outFile, const ICS_RRule& right);
+	friend ifstream& operator>>(ifstream& inFile, ICS_RRule& right);
+public:
+	enum Freq {
+		YEARLY, MONTHLY, WEEKLY, DAILY
+	};
+
+	static const string BEGIN	// BEGIN
+		, END 					// END
+		, VALUE					// RRULE
+		, KEY_FREQ				// FREQ
+		, FREQ_YEARLY			// YEARLY
+		, FREQ_MONTHLY			// MONTHLY
+		, FREQ_WEEKLY			// WEEKLY
+		, FREQ_DAILY			// DAILY
+		, KEY_UNTIL	 ;			// UNTIL
+
+		// for now, we will not support these RRULE recurrences
+		//, KEY_COUNT 			// COUNT
+		//, KEY_INTERVAL		// INTERVAL
+		//, KEY_BYMONTH			// BYMONTH
+		//, KEY_BYDAY			// BYDAY
+		//, BYDAY_0				// SU
+		//, BYDAY_1				// MO
+		//, BYDAY_2				// TU
+		//, BYDAY_3				// WE
+		//, BYDAY_4				// TH
+		//, BYDAY_5				// FR
+		//, BYDAY_6	;			// SA
+
+	void set(const string& rruleString);
+	bool hasRecurrence(ICS_Date date);
+	ICS_Date generateRecurrence(ICS_Date baseDate, ICS_Date recurranceDate);
+
+private:
+	ICS_Date start;
+	Freq freq;
+	ICS_Date until;
+};
+
+
+#endif /* ICS_RRULE_H_ */

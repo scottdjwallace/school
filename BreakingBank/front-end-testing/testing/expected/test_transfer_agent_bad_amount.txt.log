@@ -1,0 +1,19 @@
+Type "login" to login: login
+
+agent or retail: agent
+
+Perform a transaction: transfer
+
+To Account Number: 111111
+
+From Account Number: 222222
+
+Transfer Amount (Cents) : 10000000000
+
+Please enter a valid transfer amount.
+Transfer Amount (Cents) : 10000
+
+Perform a transaction: logout
+
+Type "login" to login: stop
+

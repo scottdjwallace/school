@@ -1,0 +1,14 @@
+login
+agent
+withdraw
+111111
+500
+deposit
+222222
+1050
+transfer
+555555
+222222
+500
+logout
+stop

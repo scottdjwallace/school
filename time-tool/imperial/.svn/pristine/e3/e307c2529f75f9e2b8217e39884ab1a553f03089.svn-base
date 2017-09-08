@@ -1,0 +1,31 @@
+/*
+ * ICS_Timezone_Test.h
+ *
+ *  Created on: Mar 28, 2015
+ *      Author: ecosse_18
+ */
+
+#ifndef TESTING_ICS_TIMEZONE_TEST_H_
+#define TESTING_ICS_TIMEZONE_TEST_H_
+
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+void test_ICS_Timezone() {
+	ICS_Timezone time;
+	ifstream inputTimezone("sample_ics/coursecalendar.ics",ios::binary);
+	cout << "Test Input for Time zone.h " << endl;
+	inputTimezone >> time;
+	cout << "Test output for Time zone.h" << endl;
+	ofstream outputTimezone("outTimezone.ics", ios::binary);
+	outputTimezone << time;
+	cout << "Test accessors Timezone getTzid " <<  time.getTzid() <<  endl;
+	cout << "Test accessors Timezone getDaylight " << time.getDaylight() << endl;
+	cout << "Test accessors Timezone getStandard" << time.getStandard() << endl;
+}
+
+
+
+
+#endif /* TESTING_ICS_TIMEZONE_TEST_H_ */

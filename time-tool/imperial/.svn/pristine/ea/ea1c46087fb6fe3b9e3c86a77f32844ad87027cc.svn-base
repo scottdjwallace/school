@@ -1,0 +1,173 @@
+/*
+ * ICS_VCalendar.cpp
+ *
+ *  Created on: Feb 19, 2015
+ *      Author: 7cm5_000
+ */
+
+#include <vector>
+#include <ios>
+
+#include "../dataStructures/stack.h"
+#include "icsHelpers.h"
+#include "ICS_VCalendar.h"
+#include "icsExceptions.h"
+
+
+using namespace std;
+
+const string ICS_VCalendar::BEGIN = "BEGIN";
+const string ICS_VCalendar::END = "END";
+const string ICS_VCalendar::VALUE = "VCALENDAR";
+const string ICS_VCalendar::KEY_CALSCALE = "CALSCALE";
+const string ICS_VCalendar::KEY_VERSION = "VERSION";
+const string ICS_VCalendar::KEY_METHOD = "METHOD";
+const string ICS_VCalendar::KEY_X_WR_CALNAME = "X-WR-CALNAME";
+const string ICS_VCalendar::KEY_X_WR_TIMEZONE = "X-WR-TIMEZONE";
+const string ICS_VCalendar::KEY_X_APPLE_CALENDAR = "X-APPLE-CALENDAR-COLOR";
+
+ifstream& operator>>(ifstream& file, ICS_VCalendar& calendar){
+	Stack<string> validStack;
+	bool endOfICS_VCalendar = false;
+
+	while (!file.eof() && !endOfICS_VCalendar){
+		streampos pos = file.tellg();
+		string key;
+		string value;
+		getline(file, key, ':');
+		getline(file, value, '\n');
+		trimRight(value);
+
+		if (key.compare(ICS_VCalendar::BEGIN) == 0){
+			validStack.push(value);
+
+			if (value.compare(ICS_Timezone::VALUE) == 0){
+				file.seekg(pos, ios_base::beg);
+				file >> calendar.timezone;
+			} else if (value.compare(ICS_VEvent::VALUE) == 0) {
+				file.seekg(pos, ios_base::beg);
+				ICS_VEvent e;
+				file >> e;
+				calendar.addVEvent(e);
+			}
+		} else if (key.compare(ICS_VCalendar::END) == 0){
+			string top = validStack.pop();
+
+			endOfICS_VCalendar = top.compare(ICS_VCalendar::VALUE) == 0;
+		} else if (validStack.peak().compare(ICS_VCalendar::VALUE) == 0 ){
+			if (key.compare(ICS_VCalendar::KEY_CALSCALE) == 0){
+				calendar.calscale = value;
+			} else if (key.compare(ICS_VCalendar::KEY_VERSION) == 0){
+				calendar.version = value;
+			} else if (key.compare(ICS_VCalendar::KEY_METHOD) == 0){
+				calendar.method = value;
+			} else if (key.compare(ICS_VCalendar::KEY_X_APPLE_CALENDAR) == 0){
+				calendar.xAppleCalendarColor = value;
+			} else if (key.compare(ICS_VCalendar::KEY_X_WR_CALNAME) == 0){
+				calendar.name = value;
+			} else if (key.compare(ICS_VCalendar::KEY_X_WR_TIMEZONE) == 0){
+				calendar.xWrTimezone = value;
+			}
+		}
+	}
+	return file;
+}
+
+ofstream& operator<<(ofstream& file, const ICS_VCalendar& calendar){
+	cout << "Writing ICS_VCalendar to file..." << endl;
+
+	file << "BEGIN:" << ICS_VCalendar::VALUE << endl;
+	file << ICS_VCalendar::KEY_CALSCALE << ':' << calendar.calscale << endl;
+	file << ICS_VCalendar::KEY_VERSION << ':' << calendar.version << endl;
+	file << ICS_VCalendar::KEY_METHOD << ':' << calendar.method << endl;
+	file << ICS_VCalendar::KEY_X_WR_CALNAME << ':' << calendar.name << endl;
+	file << ICS_VCalendar::KEY_X_WR_TIMEZONE << ':' << calendar.xWrTimezone << endl;
+	file << ICS_VCalendar::KEY_X_APPLE_CALENDAR << ':' << calendar.xAppleCalendarColor << endl;
+	file << calendar.timezone;
+
+	for (size_t i = 0; i < calendar.events.size(); i += 1){
+		file << calendar.events[i];
+	}
+
+	file << "END:" << ICS_VCalendar::VALUE << endl;
+
+	cout << "ICS_VCalendar written to file successfully. " << endl;
+	return file;
+}
+
+void ICS_VCalendar::addVEvent(ICS_VEvent event){
+	events.push_back(event);
+}
+
+ICS_VCalendar::ICS_VCalendar(){
+	calscale = "GREGORIAN";
+	version = "2.0";
+}
+
+string ICS_VCalendar::getCalscale(){
+	return calscale;
+}
+
+string ICS_VCalendar::getMethod(){
+	return method;
+}
+
+string ICS_VCalendar::getVersion(){
+	return version;
+}
+
+string ICS_VCalendar::getXAppleCalendarColor(){
+	return xAppleCalendarColor;
+}
+
+string ICS_VCalendar::getName(){
+	return name;
+}
+
+string ICS_VCalendar::getXWrTimezone(){
+	return xWrTimezone;
+}
+
+ICS_Timezone ICS_VCalendar::getTimezone(){
+	return timezone;
+}
+
+size_t ICS_VCalendar::getNumberOfVEvents(){
+	return events.size();
+}
+
+ICS_VCalendar& ICS_VCalendar::setTimezone(const ICS_Timezone& timezone){
+	this->timezone = timezone;
+	return *this;
+}
+
+ICS_VCalendar& ICS_VCalendar::setCalscale(string& calscale){
+	this->calscale = calscale;
+	return *this;
+}
+
+ICS_VCalendar& ICS_VCalendar::setMethod(string& method){
+	this->method = method;
+	return *this;
+}
+
+ICS_VCalendar& ICS_VCalendar::setVersion(string& version){
+	this->version = version;
+	return *this;
+}
+
+ICS_VCalendar& ICS_VCalendar::setXAppleCalendarColor(string& xAppleCalendarColor){
+	this->xAppleCalendarColor = xAppleCalendarColor;
+	return *this;
+}
+
+ICS_VCalendar& ICS_VCalendar::setName(string& name){
+	this->name = name;
+	return *this;
+}
+
+ICS_VCalendar& ICS_VCalendar::setXWrTimezone(string& xWrTimezone){
+	this->xWrTimezone = xWrTimezone;
+	return *this;
+}
+

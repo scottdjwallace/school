@@ -1,0 +1,9 @@
+login
+retail
+transfer
+111111
+222222
+10000
+logout
+stop
+

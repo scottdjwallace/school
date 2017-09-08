@@ -1,0 +1,9 @@
+login
+retail
+deposit
+111112
+111111
+10000
+logout
+stop
+

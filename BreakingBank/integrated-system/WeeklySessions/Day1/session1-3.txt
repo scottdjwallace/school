@@ -1,0 +1,16 @@
+login
+agent
+create
+000003
+Salamanca
+create
+000004
+Badger
+create
+000005
+M Ehrmantraut
+create
+000006
+Lydia Rodarte
+logout
+stop

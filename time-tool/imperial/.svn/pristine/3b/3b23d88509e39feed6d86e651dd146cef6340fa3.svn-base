@@ -1,0 +1,59 @@
+/*
+ * ICS_Clock.h
+ *
+ *  Created on: Feb 15, 2015
+ *      Author: 7cm5_000
+ */
+
+#ifndef ICS_Clock_H_
+#define ICS_Clock_H_
+
+#include "../icsExceptions.h"
+#include <fstream>
+#include <string>
+#include <stdexcept>
+
+using namespace std;
+
+class ICS_Clock {
+	friend ofstream& operator<<(ofstream& file, const ICS_Clock& time);
+	friend ostream& operator<<(ostream& output, const ICS_Clock& time);
+public:
+	// defaults to 0:00
+	ICS_Clock();
+
+	// self explanatory
+	ICS_Clock(int hour, int minute) throw (HourOutOfBounds, MinuteOutOfBounds);
+	int getHour() const;
+	int getMinute() const;
+
+	// return *this so that these methods can be chained
+	ICS_Clock& setClock(int hour, int minute) throw (HourOutOfBounds, MinuteOutOfBounds);
+	ICS_Clock& setHour(int hour) throw (HourOutOfBounds);
+	ICS_Clock& setMinute(int minute) throw (MinuteOutOfBounds);
+
+	/* returns -1 if otherTime > this
+	 * returns 0 of otherTime == this
+	 * returns 1 if otherTime < this  */
+	int compareTo(const ICS_Clock& otherTime);
+
+	bool operator>(const ICS_Clock& right) const;
+	bool operator<(const ICS_Clock& right) const;
+	bool operator==(const ICS_Clock& right) const;
+	bool operator!=(const ICS_Clock& right) const;
+	bool operator>=(const ICS_Clock& right) const;
+	bool operator<=(const ICS_Clock& right) const;
+
+	/* output 24 hour clock.
+	 * Programmer readable string: "hh:mm" 24 hour clock; */
+	string toString();
+
+	/* ICS string format: 'T' + "hhmm00"
+	 * i.e. 13:30 == T133000 */
+	string toICSString();
+private:
+	int hour      // [0, 24)
+		, minute;  // [0, 60)
+};
+
+#endif /* ICS_Clock_H_ */

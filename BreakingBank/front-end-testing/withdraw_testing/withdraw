@@ -1,0 +1,12 @@
+#!/bin/bash
+
+cd testsuite1
+python breakingbank-backend.py 
+
+cd ..
+cd testsuite2
+python breakingbank-backend.py
+
+cd .. 
+cd testsuite3
+python breakingbank-backend.py

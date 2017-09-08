@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# python writes trans summ file to ../SummaryFiles/ -- Time Stamped
+# read in local valid accounts
+
+cd DailySessions
+
+for i in *.txt
+do 
+	echo "running $i"
+	FILE="$i"
+	cat $FILE | while read line 
+	do
+		echo $line
+	done | python ../breakingbank.py 
+	cat ../SummaryFiles/* >> ../mergedtransactions.txt
+done
+
+cd ..
+
+python breakingbank-backend.py

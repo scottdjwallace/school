@@ -1,0 +1,16 @@
+Type "login" to login: login
+
+agent or retail: retail
+
+Perform a transaction: transfer
+
+To Account Number: 111111
+
+From Account Number: 222222
+
+Transfer Amount (Cents) : 10000
+
+Perform a transaction: logout
+
+Type "login" to login: stop
+

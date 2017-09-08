@@ -1,0 +1,6 @@
+login
+retail
+create
+logout
+stop
+

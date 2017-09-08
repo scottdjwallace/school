@@ -1,0 +1,33 @@
+/*
+ * ics.cpp
+ *
+ *  Created on: Mar 19, 2015
+ *      Author: 13ch23
+ */
+
+#include <iostream>
+#include <ios>
+#include <fstream>
+#include "ics.h"
+#include "../dataStructures/stack.h"
+#include "icsExceptions.h"
+
+bool isValid(string filename){
+	ifstream icsFile(filename.c_str(), ios::binary);
+
+	bool valid = false,begin = false,end = false;
+
+	while (!icsFile.eof()){
+		string value;
+		getline(icsFile, value);
+		if(value.find("BEGIN:VCALENDAR",0) != string::npos)
+			begin = true;
+		if(value.find("END:VCALENDAR",0) != string::npos) {
+			end = true;
+			break;
+		}
+	}
+	if(begin && end)
+		valid = true;
+	return valid;
+}

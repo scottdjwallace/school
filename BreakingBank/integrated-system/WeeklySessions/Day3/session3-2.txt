@@ -1,0 +1,16 @@
+login
+retail
+deposit
+000001
+15000
+deposit
+000002
+15000
+withdraw
+000003
+2000
+withdraw
+000004
+1000
+logout
+stop

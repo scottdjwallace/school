@@ -1,0 +1,10 @@
+initializing app.js...
+    initializing mongoose...
+        models/user initialized.
+    mongoose initialized.
+    initializing routes...
+        user routes set.
+    routes initialized.
+app.js now listening on port 3010.
+[0mGET /hello.txt [32m200 [0m16.477 ms - 6[0m
+[0mGET /favicon.ico [33m404 [0m12.429 ms - 24[0m

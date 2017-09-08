@@ -1,0 +1,17 @@
+Type "login" to login: login
+
+agent or retail: agent
+
+Perform a transaction: delete
+
+Enter the account number: 123456
+
+Please enter a valid account number.
+Enter the account number: 111111
+
+Enter the account name: Test Name
+
+Perform a transaction: logout
+
+Type "login" to login: stop
+

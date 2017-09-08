@@ -1,0 +1,127 @@
+/*
+ * icsExceptions.h
+ *
+ *  Created on: Mar 26, 2015
+ *      Author: ecosse_18
+ */
+
+#ifndef ICSEXCEPTIONS_H_
+#define ICSEXCEPTIONS_H_
+
+#include <stdexcept>
+#include <string>
+#include <iostream>
+
+using namespace std;
+
+// ICS_Clock
+class MinuteOutOfBounds : public runtime_error {
+public:
+	MinuteOutOfBounds(int minute) :
+		runtime_error("Minute outside of bounds [0, 60): " + minute) {};
+};
+
+class HourOutOfBounds : public runtime_error {
+public:
+	HourOutOfBounds(int hour) :
+		runtime_error("Hour outside of bounds [0, 24): " + hour) {};
+};
+
+
+// ICS_Date 
+class ICSDateStringException : public runtime_error {
+public:
+	ICSDateStringException(string s) :
+		runtime_error("Format error in ICS Date String: " + s) {};
+};
+
+class NegativeYearException : public runtime_error {
+public:
+	NegativeYearException(int year) :
+		runtime_error("Negative year: " + year) {};
+};
+
+class MonthOutOfBounds : public runtime_error {
+public:
+	MonthOutOfBounds(int month) :
+		runtime_error("Month outside of bounds [1, 12]: " + month) {};
+};
+
+class DayOutOfBounds : public runtime_error {
+public:
+	DayOutOfBounds(int day) :
+		runtime_error("Day outside of bounds [1, 31]: " + day) {};
+};
+
+
+
+// ICS_Day
+class DifferentDayException : public runtime_error {
+public:
+	DifferentDayException(string message) :
+		runtime_error(message + " Error Code: ") {};
+};
+
+class DayException : public runtime_error {
+public:
+	DayException(string message) :
+		runtime_error(message + " Error Code: ") {};
+};
+
+// ICS_Daylight
+class DaylightException : public runtime_error {
+public:
+	DaylightException(string message) :
+		runtime_error(message + " Error Code: ") {};
+};
+
+// ICS_RRule
+class RRuleException : public runtime_error {
+public:
+	RRuleException(string message) :
+		runtime_error(message + " Error Code: ") {};
+};
+
+// ICS_Standard
+class StandardException : public runtime_error {
+public:
+	StandardException(string message) :
+		runtime_error(message + " Error Code: ") {};
+};
+
+// ICS_Timezone
+class TimezoneException : public runtime_error {
+public:
+	TimezoneException(string message) :
+		runtime_error(message + " Error Code: ") {};
+};
+
+// ICS_VCalendar
+class VCalendarException : public runtime_error {
+public:
+	VCalendarException(string message) :
+		runtime_error(message + " Error Code: ") {};
+};
+
+// ICS_VEvent
+class NoOverlapException : public runtime_error {
+public:
+	NoOverlapException() :
+		runtime_error("Two ICS_VEvents have no overlap.") {};
+};
+
+class VEventException : public runtime_error {
+public:
+	VEventException(string message) :
+		runtime_error(message + " Error Code: ") {};
+};
+
+// ICS
+class ICSException : public runtime_error {
+public:
+	ICSException(string message) :
+		runtime_error(message + " Error Code: ") {};
+};
+
+
+#endif /* ICSEXCEPTIONS_H_ */

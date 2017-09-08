@@ -1,0 +1,70 @@
+#!/bin/bash
+echo "=== Day 1 ==="
+cp WeeklySessions/Day1/* DailySessions
+./daily
+cd DailySessions
+rm *
+cd ..
+cp SummaryFiles/* OldSummaryFiles
+cd SummaryFiles
+rm *
+cd ..
+cat mergedtransactions.txt > Day1Merged.txt
+cat masteraccounts.txt > Day1Master.txt
+echo -n "" > mergedtransactions.txt
+
+echo "=== Day 2 ==="
+cp WeeklySessions/Day2/* DailySessions
+./daily
+cd DailySessions
+rm *
+cd ..
+cp SummaryFiles/* OldSummaryFiles
+cd SummaryFiles
+rm *
+cd ..
+cat mergedtransactions.txt > Day2Merged.txt
+cat masteraccounts.txt > Day2Master.txt
+echo -n "" > mergedtransactions.txt
+
+echo "=== Day 3 ==="
+cp WeeklySessions/Day3/* DailySessions
+./daily
+cd DailySessions
+rm *
+cd ..
+cp SummaryFiles/* OldSummaryFiles
+cd SummaryFiles
+rm *
+cd ..
+cat mergedtransactions.txt > Day3Merged.txt
+cat masteraccounts.txt > Day3Master.txt
+echo -n "" > mergedtransactions.txt
+
+echo "=== Day 4 ==="
+cp WeeklySessions/Day4/* DailySessions
+./daily
+cd DailySessions
+rm *
+cd ..
+cp SummaryFiles/* OldSummaryFiles
+cd SummaryFiles
+rm *
+cd ..
+cat mergedtransactions.txt > Day4Merged.txt
+cat masteraccounts.txt > Day4Master.txt
+echo -n "" > mergedtransactions.txt
+
+echo "=== Day 5 ==="
+cp WeeklySessions/Day5/* DailySessions
+./daily
+cd DailySessions
+rm *
+cd ..
+cp SummaryFiles/* OldSummaryFiles
+cd SummaryFiles
+rm *
+cd ..
+cat mergedtransactions.txt > Day5Merged.txt
+cat masteraccounts.txt > Day5Master.txt
+echo -n "" > mergedtransactions.txt

@@ -1,0 +1,16 @@
+login
+retail
+withdraw
+000005
+10000
+delete
+000005
+M Ehrmantraut
+withdraw
+000006
+10000
+delete
+000006
+Lydia Rodarte
+logout
+stop

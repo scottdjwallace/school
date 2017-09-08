@@ -1,0 +1,9 @@
+login
+retail
+logout
+withdraw
+login
+retail
+logout
+stop
+

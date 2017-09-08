@@ -1,0 +1,17 @@
+Type "login" to login: login
+
+agent or retail: agent
+
+Perform a transaction: deposit
+
+Account Number: 111111
+
+Deposit Amount (Cents): 1000000000000
+
+Please enter a valid amount.
+Deposit Amount (Cents): 10000
+
+Perform a transaction: logout
+
+Type "login" to login: stop
+

@@ -1,0 +1,21 @@
+Day: 1		Agency: 6	value 10
+Day: 2		Agency: 30	value 9
+Day: 3		Agency: 23	value 10
+Day: 4		Agency: 38	value 8
+Day: 5		Agency: 49	value 8
+Day: 6		Agency: 16	value 7
+Day: 7		Agency: 1	value 7
+Day: 8		Agency: 8	value 10
+Day: 9		Agency: 36	value 9
+Day: 10		Agency: 2	value 8
+Day: 11		Agency: 11	value 7
+Day: 12		Agency: 55	value 8
+Day: 13		Agency: 46	value 9
+Day: 14		Agency: 40	value 10
+Day: 15		Agency: 13	value 9
+Day: 16		Agency: 47	value 10
+Day: 17		Agency: 33	value 9
+Day: 18		Agency: 3	value 6
+Day: 19		Agency: 42	value 10
+Day: 20		Agency: 45	value 8
+Total Funding: 172

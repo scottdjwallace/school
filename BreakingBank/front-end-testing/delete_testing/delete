@@ -1,0 +1,30 @@
+#!/bin/bash
+
+cd testsuite1
+echo "testing suite 1"
+python breakingbank-backend.py 
+
+cd ..
+cd testsuite2
+echo "testing suite 2"
+python breakingbank-backend.py
+
+cd .. 
+cd testsuite3
+echo "testing suite 3"
+python breakingbank-backend.py
+
+cd .. 
+cd testsuite4
+echo "testing suite 4"
+python breakingbank-backend.py
+
+cd .. 
+cd testsuite5
+echo "testing suite 5"
+python breakingbank-backend.py
+
+cd .. 
+cd testsuite6
+echo "testing suite 6"
+python breakingbank-backend.py

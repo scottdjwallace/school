@@ -1,0 +1,9 @@
+login
+retail
+withdraw
+111111
+1000000000
+10000
+logout
+stop
+

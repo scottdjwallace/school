@@ -1,0 +1,86 @@
+/*
+ * TT_ICSFile.h
+ *
+ *  Created on: Feb 19, 2015
+ *      Author: 7cm5_000
+ */
+
+#ifndef TT_ICSFILE_H_
+#define TT_ICSFILE_H_
+
+#include <string>
+#include <iostream>
+#include <fstream>
+#include <stdexcept>
+#include <vector>
+
+#include "../dataStructures/stack.h"
+#include "ICS_Timezone.h"
+#include "ICS_VEvent.h"
+#include "ICS_Day.h"
+
+using namespace std;
+
+class FileFormatException : public runtime_error {
+public:
+	FileFormatException() :
+		runtime_error("Improperly formatted input file") {};
+};
+
+class ICS_VCalendar {
+	friend ofstream& operator<<(ofstream& outFile, const ICS_VCalendar& calendar);
+	friend ifstream& operator>>(ifstream& inFile, ICS_VCalendar& ics);
+
+	friend void setWeekAttribute(string& key, string& value, ICS_VCalendar& calendar);
+	friend void setTimezoneAttributes(string& key, string& value, ICS_VCalendar& calendar);
+public:
+	ICS_VCalendar();
+
+	// A ICS_VCalendar contains a vector of ICS_VEvents that happen on any calendar date.
+	// This method takes a date, and returns a ICS_Day object (wrapper for a list of VEvents
+	// occuring on a certain day)
+	ICS_Day getEventsOn(ICS_Date date);
+
+	size_t getNumberOfVEvents();
+	string getCalscale();
+	string getVersion();
+	string getMethod();
+	string getName();
+	string getXWrTimezone();
+	string getXAppleCalendarColor();
+	ICS_Timezone getTimezone();
+
+	ICS_VCalendar& setCalscale(string& calscale);
+	ICS_VCalendar& setVersion(string& version);
+	ICS_VCalendar& setMethod(string& method);
+	ICS_VCalendar& setName(string& name);
+	ICS_VCalendar& setXWrTimezone(string& xWrTimezone);
+	ICS_VCalendar& setXAppleCalendarColor(string& xAppleCalendarColor);
+	ICS_VCalendar& setTimezone(const ICS_Timezone& timezone);
+
+
+	void addVEvent(ICS_VEvent event);
+
+	static ICS_VCalendar generateCommonWeek(vector<ICS_VCalendar>& calendarArray);
+	static const string BEGIN
+				, END
+				, VALUE // ""
+				, KEY_CALSCALE // = "CALSCALE";
+				, KEY_VERSION // = "VERSION";
+				, KEY_METHOD // = "METHOD";
+				, KEY_X_WR_CALNAME // = "X-WR-CALNAME"
+				, KEY_X_WR_TIMEZONE // = "X-WR-TIMEZONE"
+				, KEY_X_APPLE_CALENDAR; // = "X-APPLE-CALENDAR-COLOR"
+private:
+	ICS_Timezone timezone;
+	string calscale;
+	string version;
+	string method;
+	string name;
+	string xWrTimezone;
+	string xAppleCalendarColor;
+
+	vector<ICS_VEvent> events;
+};
+
+#endif /* TT_ICSFILE_H_ */

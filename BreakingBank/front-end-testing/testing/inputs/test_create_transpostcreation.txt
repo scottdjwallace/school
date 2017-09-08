@@ -1,0 +1,12 @@
+login
+agent
+create
+123456
+Test Name
+withdraw
+123456
+111111
+10000
+logout
+stop
+

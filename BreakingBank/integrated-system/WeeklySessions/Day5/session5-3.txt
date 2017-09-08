@@ -1,0 +1,14 @@
+login
+agent
+transfer
+000002
+000003
+5000
+deposit
+000004
+1000
+withdraw
+111111
+100
+logout
+stop

@@ -1,0 +1,16 @@
+login
+retail
+transfer
+111111
+222222
+5000
+transfer
+333333
+444444
+5000
+transfer
+555555
+666666
+5000
+logout 
+stop

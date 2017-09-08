@@ -1,0 +1,46 @@
+/*
+ * ICS_RRule.cpp
+ *
+ *  Created on: Mar 20, 2015
+ *      Author: 7cm5_000
+ */
+
+#include "ICS_RRule.h"
+#include "icsExceptions.h"
+
+const string ICS_RRule::BEGIN = "BEGIN";
+const string ICS_RRule::END = "END";
+const string ICS_RRule::FREQ_DAILY = "DAILY";
+const string ICS_RRule::FREQ_MONTHLY = "MONTHLY";
+const string ICS_RRule::FREQ_WEEKLY = "WEEKLY";
+const string ICS_RRule::FREQ_YEARLY = "YEARLY";
+const string ICS_RRule::KEY_UNTIL = "UNTIL";
+
+ofstream& operator<<(ofstream& outFile, const ICS_RRule& right){
+
+	return outFile;
+}
+
+ifstream& operator>>(ifstream& inFile, ICS_RRule& right){
+	string key;
+	string value;
+	getline(inFile, key, ':');
+	getline(inFile, value, '\n');
+	return inFile;
+}
+
+void ICS_RRule::set(const string& rruleString){
+
+}
+
+bool hasRecurrence(ICS_Date date){
+	return false;
+}
+
+ICS_Date generateRecurrence(ICS_Date baseDate, ICS_Date recurranceDate){
+	return baseDate;
+}
+
+
+
+

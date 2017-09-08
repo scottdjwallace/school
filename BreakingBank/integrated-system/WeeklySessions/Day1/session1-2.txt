@@ -1,0 +1,19 @@
+login
+agent
+create
+777777
+Walt Jr.
+create
+888888
+Gus Fring
+create
+999999
+Skinny Pete
+create
+000001
+Steven Gomez
+create
+000002
+Tortuga
+logout
+stop

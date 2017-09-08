@@ -1,0 +1,22 @@
+login
+agent
+create
+666666
+Heisenberg
+create
+111111
+Walter White
+create
+222222
+Jesse Pinkman
+create
+333333
+Saul Goodman
+create
+444444
+Skylar White
+create
+555555
+Hank Schrader
+logout
+stop

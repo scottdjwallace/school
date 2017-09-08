@@ -1,0 +1,102 @@
+/*
+ * Testing script for all Engine objects, except ICS_Clock,ICS_Day and ICS_Date
+ *
+ * All objects are located in ../ics_files/*
+ */
+
+#include <string>
+#include <vector>
+#include <cstdlib>
+#include <ios>
+#include <stdlib.h>
+#include <iostream>
+#include <fstream>
+
+#include "../dataStructures/stack.h"
+#include "../ics_files/ICS_Day.h"
+#include "../ics_files/ICS_Daylight.h"
+#include "../ics_files/ICS_RRule.h"
+#include "../ics_files/ICS_Standard.h"
+#include "../ics_files/ICS_Time/ICS_Clock.h"
+#include "../ics_files/ICS_Time/ICS_Date.h"
+#include "../ics_files/ICS_Timezone.h"
+#include "../ics_files/ICS_VCalendar.h"
+#include "../ics_files/ICS_VEvent.h"
+#include "../ics_files/ics.h"
+#include "../ics_files/icsHelpers.h"
+
+using namespace std;
+
+void unit_tests(){
+
+	cout << "TESTING SCRIPT HAS BEGUN...\n" << endl;
+/**************************************************************************/
+	cout << "\nCURRENTLY TESTING ICS_DAYLIGHT...\n" << endl;
+
+	ICS_Daylight day;
+	cout  << "Test input ICS_Daylight.h" << endl;
+
+	ifstream inputDaylight("sample_ics/coursecalendar.ics", ios::binary);
+	cout << "Test Input for ICS_Daylight.h " << endl;
+
+	inputDaylight >> day;
+	cout << "Test file output for ICS_Daylight.h" << endl;
+
+	ofstream outputDaylight("sample_ics/outDaylight.ics", ios::binary);
+	outputDaylight << day; // file output
+
+	cout << "Test console output for Standard.h is working" << endl;
+	cout << "Test accessors Daylight getDTstart " << day.getDtstart() <<  endl;
+	cout << "Test accessors Daylight getRrule " << day.getRrule() <<  endl;
+	cout << "Test accessors Daylight getTzname " << day.getTzname() <<  endl;
+	cout << "Test accessors Daylight getTzoffsetfrom " << day.getTzoffsetfrom() <<  endl;
+	cout << "Test accessors Daylight getTzoffsetto " << day.getTzoffsetto() <<  endl;
+/**************************************************************************/
+	cout << "\nCURRENTLY TESTING ICS_RRULE...\n" << endl;
+/**************************************************************************/
+	cout << "\nCURRENTLY TESTING ICS_STANDARD..\n" << endl;
+
+	ICS_Standard standard;
+	cout  << "Test input Standard.h" << endl;
+
+	ifstream inputStandard("sample_ics/coursecalendar.ics", ios::binary);
+	cout << "Test Input for Standard.h " << endl;
+
+	inputStandard >> standard;
+	cout << "Test file output for Standard.h" << endl;
+
+	ofstream outputStandard("sample_ics/outStandard.ics", ios::binary);
+	outputStandard << time; // file output
+
+	cout << "Test console output for Standard.h is working" << endl;
+	cout << "Test accessors Standard getDTstart " << standard.getDtstart() <<  endl;
+	cout << "Test accessors Standard getRrule " << standard.getRrule() << endl;
+	cout << "Test accessors Standard getTzname" << standard.getTzname() << endl;
+	cout << "Test accessors Standard getTzoffsetfrom" << standard.getTzoffsetfrom() << endl;
+	cout << "Test accessors Standard getTzffseto" << standard.getTzoffsetto() << endl;
+/**************************************************************************/
+	cout << "\nCURRENTLY TESTING ICS_TIMEZONE...\n" << endl;
+
+	ICS_Timezone time;
+	ifstream inputTimezone("sample_ics/coursecalendar.ics",ios::binary);
+	cout << "Test Input for Time zone.h " << endl;
+	inputTimezone >> time;
+	cout << "Test output for Time zone.h" << endl;
+	ofstream outputTimezone("outTimezone.ics", ios::binary);
+	outputTimezone << time;
+	cout << "Test accessors Timezone getTzid " <<  time.getTzid() <<  endl;
+	cout << "Test accessors Timezone getDaylight " << time.getDaylight() << endl;
+	cout << "Test accessors Timezone getStandard" << time.getStandard() << endl;
+/**************************************************************************/
+	cout << "\nCURRENTLY TESTING ICS_VCalendar...\n" << endl;
+/**************************************************************************/
+	cout << "\nCURRENTLY TESTING ICS_VEvent...\n" << endl;
+/**************************************************************************/
+	cout << "\nCURRENTLY TESTING ICS...\n" << endl;
+/**************************************************************************/
+	cout << "\nCURRENTLY TESTING ICSHELPERS...\n" << endl;
+/**************************************************************************/
+	cout << "\nCURRENTLY TESTING ICSHELPERS...\n" << endl;
+/**************************************************************************/
+	cout << "TESTING SCRIPT HAS ENDED!!!\n" << endl;
+}

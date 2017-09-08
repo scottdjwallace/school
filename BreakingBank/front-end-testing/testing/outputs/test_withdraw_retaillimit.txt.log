@@ -1,0 +1,23 @@
+Type "login" to login: login
+
+agent or retail: retail
+
+Perform a transaction: withdraw
+
+Account Number: 111111
+
+Withdrawal Amount (Cents) : 10000
+
+Perform a transaction: withdraw
+
+Account Number: 111111
+
+Withdrawal Amount (Cents) : 10000000
+
+Please enter a valid amount.
+Withdrawal Amount (Cents) : 10000
+
+Perform a transaction: logout
+
+Type "login" to login: stop
+
